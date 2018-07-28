@@ -46,9 +46,13 @@ namespace RNGTest
                     print("Random Tall Object");
                     spawnageInt = "Random Rall Object";
                 }
-                else if(num2 >70){
+                else if(num2 >=70 && num2 <= 80){
                     print("Enemy");
                     spawnageInt = "Enemy";
+                }
+                else if(num2 >= 80 && num2 <= 90){
+                    print("Shooting enemy");
+                    spawnageInt = "Shooting enemy";
                 }    
                 return spawnageInt;
         }
@@ -60,8 +64,8 @@ namespace RNGTest
             int max = 100;
             Random random = new Random();
 
-            string spawnageDouble = "D";
-            string spawnageInt = "I";
+            string spawnageDouble = "";
+            string spawnageInt = "";
             while(i<100){
                 spawnageInt = RollInt(i,min,max,random,spawnageInt);
                 spawnageDouble = RollDouble(spawnageDouble,random);
