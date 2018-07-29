@@ -27,7 +27,7 @@ public class RandomSpawning : MonoBehaviour
     {
         int randomAreaIndex = Random.Range(0, SpawnAreas.Length);
         GameObject Area = (GameObject)Instantiate(SpawnAreas[randomAreaIndex]);
-        float AreaWidth = Area.transform.Find("ground").localScale.x;
+        float AreaWidth = Area.transform.Find("floor").localScale.x;
         float AreaCenter = FarthestAreaEndX + AreaWidth * 0.5f;
         Area.transform.position = new Vector3(AreaCenter, 0, 0);
         CurrentAreas.Add(Area);
@@ -47,7 +47,7 @@ public class RandomSpawning : MonoBehaviour
 
         foreach (var Area in CurrentAreas)
         {
-            float AreaWidth = Area.transform.Find("ground").localScale.x;
+            float AreaWidth = Area.transform.Find("floor").localScale.x;
             Debug.Log(AreaWidth);
             float AreaStartX = Area.transform.position.x - (AreaWidth * 0.5f);
             Debug.Log(AreaStartX);
