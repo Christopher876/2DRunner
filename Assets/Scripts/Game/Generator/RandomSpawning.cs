@@ -7,6 +7,7 @@ public class RandomSpawning : MonoBehaviour
     public GameObject[] SpawnAreas;
     public List<GameObject> CurrentAreas;
     private float screenWidthinPoints;
+	public GameObject player;
 
     // Use this for initialization
     void Start()
@@ -14,13 +15,7 @@ public class RandomSpawning : MonoBehaviour
         float height = 2.0f * Camera.main.orthographicSize;
         screenWidthinPoints = height * Camera.main.aspect;
         StartCoroutine(GeneratorCheck());
-        Debug.Log("Done Start");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        //Debug.Log("Done Start");
     }
 
     void AddRoom(float FarthestAreaEndX)
@@ -39,7 +34,7 @@ public class RandomSpawning : MonoBehaviour
        // Debug.Log("Trying Start");
         List<GameObject> AreasToRemove = new List<GameObject>();
         bool AddAreas = true;
-        float playerX = transform.position.x;
+        float playerX = player.transform.position.x;
         float removeAreaX = playerX - screenWidthinPoints;
         float addAreaX = playerX + screenWidthinPoints;
         float FarthestAreaEndX = 0;
@@ -48,11 +43,11 @@ public class RandomSpawning : MonoBehaviour
         foreach (var Area in CurrentAreas)
         {
             float AreaWidth = Area.transform.Find("floor").localScale.x;
-            Debug.Log(AreaWidth);
+            //Debug.Log(AreaWidth);
             float AreaStartX = Area.transform.position.x - (AreaWidth * 0.5f);
-            Debug.Log(AreaStartX);
+            //Debug.Log(AreaStartX);
             float AreaEndX = AreaStartX + AreaWidth;
-            Debug.Log(AreaEndX);
+           // Debug.Log(AreaEndX);
 
             if (AreaStartX > addAreaX)
             {
@@ -77,7 +72,7 @@ public class RandomSpawning : MonoBehaviour
         {
             AddRoom(FarthestAreaEndX);
         }
-        Debug.Log("Done Deciding");
+        //Debug.Log("Done Deciding");
     }
 
     private IEnumerator GeneratorCheck()
