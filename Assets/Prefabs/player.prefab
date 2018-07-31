@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986649300312494}
   - component: {fileID: 212302733732386536}
+  - component: {fileID: 114922484789467268}
   - component: {fileID: 114861490091872150}
   - component: {fileID: 114525697388429452}
   - component: {fileID: 50485064892781000}
@@ -101,8 +102,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnAreas:
-  - {fileID: 1569511646501932, guid: 07323b3e9dc5da2478f6e33f4f9489af, type: 2}
+  - {fileID: 0}
   CurrentAreas: []
+  player: {fileID: 0}
+  logic: {fileID: 0}
 --- !u!114 &114861490091872150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,9 +117,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8619deb62ab18124e97e44073b0b850c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swipe_controls: {fileID: 0}
   playerSpeed: 10
   playerjump: 500
   isgrounded: 0
+  rampUpTime: 0
+  ChangeSpeed: 0
+  ChangeTime: 0
+  addToSpeed: 0
+--- !u!114 &114922484789467268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024042267887604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8286bc699613b6e44aa7da9c00b3418a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadzone: 125
+  tap: 0
+  swipeLeft: 0
+  swipeRight: 0
+  swipeUp: 0
+  swipeDown: 0
+  isDragging: 0
+  startTouch: {x: 0, y: 0}
+  swipeDelta: {x: 0, y: 0}
 --- !u!212 &212302733732386536
 SpriteRenderer:
   m_ObjectHideFlags: 1

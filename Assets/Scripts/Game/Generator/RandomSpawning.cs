@@ -8,20 +8,40 @@ public class RandomSpawning : MonoBehaviour
     public List<GameObject> CurrentAreas;
     private float screenWidthinPoints;
 	public GameObject player;
+	public GameObject logic;
+	private GameObject[] SpawnPoints;
 
-    // Use this for initialization
-    void Start()
+	// Use this for initialization
+	void Start()
     {
         float height = 2.0f * Camera.main.orthographicSize;
         screenWidthinPoints = height * Camera.main.aspect;
         StartCoroutine(GeneratorCheck());
+
+		//player_movement playerScript = player.GetComponent<player_movement>();
         //Debug.Log("Done Start");
     }
+
+	public GameObject[] FindSpawnPoints()
+	{
+		GameObject[] SpawnPoints = new GameObject[5];
+		SpawnPoints[0] = GameObject.Find("spawn_area_1");
+		Debug.Log(SpawnPoints[0].transform.position.x);
+
+		/*
+		SpawnPoints.Add(GameObject.Find("spawn_area_1"));
+		SpawnPoints.Add(GameObject.Find("spawn_area_2"));
+		SpawnPoints.Add(GameObject.Find("spawn_area_3"));
+		SpawnPoints.Add(GameObject.Find("spawn_area_4"));
+		SpawnPoints.Add(GameObject.Find("spawn_area_5"));
+		*/
+		return SpawnPoints;
+	}
 
     void AddRoom(float FarthestAreaEndX)
     {
         int randomAreaIndex = Random.Range(0, SpawnAreas.Length);
-        GameObject Area = (GameObject)Instantiate(SpawnAreas[randomAreaIndex]);
+		GameObject Area = (GameObject)Instantiate(SpawnAreas[randomAreaIndex]);
         float AreaWidth = Area.transform.Find("floor").localScale.x;
         float AreaCenter = FarthestAreaEndX + AreaWidth * 0.5f;
         Area.transform.position = new Vector3(AreaCenter, 0, 0);
@@ -71,6 +91,8 @@ public class RandomSpawning : MonoBehaviour
         if (AddAreas)
         {
             AddRoom(FarthestAreaEndX);
+			GameObject[] SpawnPoints=FindSpawnPoints();
+			logic.GetComponent<RandomEnemySpawn>().Begin(SpawnPoints);
         }
         //Debug.Log("Done Deciding");
     }
@@ -79,9 +101,18 @@ public class RandomSpawning : MonoBehaviour
     {
         while (true)
         {
+
+			float seconds = 0.25f;
             DecidetoGenerate();
-            yield return new WaitForSeconds(0.25f);
-        }
+			if (GameObject.Find("player").GetComponent<player_movement>().playerSpeed > 25)
+			{
+				yield return new WaitForSeconds(0);
+			}
+			else
+			{
+				yield return new WaitForSeconds(seconds);
+			}
+		}
     }
 }
 

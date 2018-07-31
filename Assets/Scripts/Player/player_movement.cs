@@ -4,45 +4,60 @@ using UnityEngine;
 
 public class player_movement : MonoBehaviour
 {
-
-    public int playerSpeed = 10;
+    public float playerSpeed = 10;
     private bool facingright = false;
     public int playerjump = 1250;
-    private float moveX;
     public bool isgrounded;
 
+	public float rampUpTime = 0;
+	public float ChangeSpeed = 0;
+	public float ChangeTime = 0;
+	public float addToSpeed = 0;
 
-    // Update is called once per frame
-    void Update()
+	private Swipe Swipe_Controls;
+
+	private void Awake()
+	{
+		Swipe_Controls = GetComponent<Swipe>();
+	}
+	
+	// Update is called once per frame
+	void Update()
     {
         playermove();
+		rampUp();
         //playerRayCast();
     }
+
+	void rampUp()
+	{
+
+		rampUpTime -= Time.deltaTime;
+
+		if (rampUpTime < ChangeSpeed)
+		{
+			Debug.Log(playerSpeed);
+			playerSpeed = playerSpeed + addToSpeed;
+			rampUpTime = ChangeTime;
+		}
+	}
 
     void playermove()
     {
         //Control
-        moveX = Input.GetAxis("Horizontal");
+        //moveX = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") || Swipe_Controls.swipeUp == true)
         {
             jump();
         }
 
-        //Animation
-
-        //Player Direction
-        if (moveX < 0.0f && facingright == false)
-        {
-            flipPlayer();
-        }
-        else if (moveX > 0.0f && facingright == true)
-        {
-            flipPlayer();
-        }
+		if (Swipe_Controls.tap == true)
+			Debug.Log("tap");
 
         //Physics
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+		
 
     }
 
@@ -63,7 +78,7 @@ public class player_movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D ground)
     {
-        Debug.Log("Player has hit the " + ground.collider.name); //collision detection for the player debug
+        //Debug.Log("Player has hit the " + ground.collider.name); //collision detection for the player debug
                                                                  /*if (ground.gameObject.tag == "ground")
                                                                  {
                                                                      isgrounded = true;
