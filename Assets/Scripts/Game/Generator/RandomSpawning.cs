@@ -45,9 +45,10 @@ public class RandomSpawning : MonoBehaviour
         float AreaWidth = Area.transform.Find("floor").localScale.x;
         float AreaCenter = FarthestAreaEndX + AreaWidth * 0.5f;
         Area.transform.position = new Vector3(AreaCenter, 0, 0);
-        CurrentAreas.Add(Area);
-       // Debug.Log("Done Add");
-    }
+		Area.AddComponent<EnemyGeneration>();
+		//Area.GetComponent<EnemyGeneration>().Begin();
+		CurrentAreas.Add(Area);
+	}
 
     private void DecidetoGenerate()
     {
@@ -91,8 +92,6 @@ public class RandomSpawning : MonoBehaviour
         if (AddAreas)
         {
             AddRoom(FarthestAreaEndX);
-			GameObject[] SpawnPoints=FindSpawnPoints();
-			logic.GetComponent<RandomEnemySpawn>().Begin(SpawnPoints);
         }
         //Debug.Log("Done Deciding");
     }
