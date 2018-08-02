@@ -52,8 +52,8 @@ public class player_movement : MonoBehaviour
             jump();
         }
 
-		if (Swipe_Controls.tap == true)
-			Debug.Log("tap");
+		//if (Swipe_Controls.tap == true)
+			//Debug.Log("tap");
 
         //Physics
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);

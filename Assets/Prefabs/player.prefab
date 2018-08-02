@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 114922484789467268}
   - component: {fileID: 114861490091872150}
   - component: {fileID: 114525697388429452}
+  - component: {fileID: 114512380737990242}
+  - component: {fileID: 114437837543052062}
   - component: {fileID: 50485064892781000}
   - component: {fileID: 61706423991663994}
   m_Layer: 0
@@ -90,6 +92,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.51, y: 1.78}
   m_EdgeRadius: 0
+--- !u!114 &114437837543052062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024042267887604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d5e473244367f47a8b57baded62c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 0}
+  gun_placeholder: {fileID: 0}
+--- !u!114 &114512380737990242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024042267887604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551d6ebd07a0a44b67404157a8e220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  timeText: {fileID: 0}
+  score: 100
+  TimeOnField: 0
+  alive: 1
+  score_multipler: 5
 --- !u!114 &114525697388429452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8619deb62ab18124e97e44073b0b850c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipe_controls: {fileID: 0}
   playerSpeed: 10
   playerjump: 500
   isgrounded: 0
@@ -137,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deadzone: 125
-  tap: 0
   swipeLeft: 0
   swipeRight: 0
   swipeUp: 0

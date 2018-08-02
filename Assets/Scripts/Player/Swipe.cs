@@ -5,23 +5,27 @@ using UnityEngine;
 public class Swipe : MonoBehaviour {
 
 	public int deadzone = 125;
-	public bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
+	public bool swipeLeft, swipeRight, swipeUp, swipeDown;
 	public bool isDragging = false;
 	public Vector2 startTouch, swipeDelta;
 
-	private float tapTime = 0;
-	public float tapDelay = 0.1f;
+	private float hold = 0;
+	private float release = 0.02f;
+
+	private void Start()
+	{
+		
+	}
 
 	private void Update()
 	{
-		tap = swipeLeft = swipeRight = swipeUp = swipeDown = false;
+		swipeLeft = swipeRight = swipeUp = swipeDown = false;
 
 		#region Standalone Inputs
 
 		if (Input.GetMouseButtonDown(0))
 		{
 			isDragging = true;
-			tap = true;
 			startTouch = Input.mousePosition;
 		}
 
@@ -40,7 +44,6 @@ public class Swipe : MonoBehaviour {
 			if(Input.touches[0].phase == TouchPhase.Began)
 			{
 				isDragging = true;
-				tap = true;
 				startTouch = Input.touches[0].position;
 			}
 			else if(Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
@@ -67,13 +70,13 @@ public class Swipe : MonoBehaviour {
 		}
 
 		//Cross the deadzone?
-		if(swipeDelta.magnitude > deadzone)
+		if (swipeDelta.magnitude > deadzone)
 		{
 			//direction
 			float x = swipeDelta.x;
 			float y = swipeDelta.y;
 
-			if(Mathf.Abs(x) > Mathf.Abs(y))
+			if (Mathf.Abs(x) > Mathf.Abs(y))
 			{
 				//Left or right
 				if (x < 0)
@@ -97,6 +100,7 @@ public class Swipe : MonoBehaviour {
 
 			Reset();
 		}
+
 
 	}
 

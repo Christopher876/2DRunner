@@ -9,59 +9,52 @@ public class EnemyGeneration : MonoBehaviour {
 	private int RandomSpawnPoint;
 	private int EnemyPick;
 	public int spawn_EnemyPick_max = 5;
-	//private GameObject TheEnemy = (GameObject)Resources.Load("Prefabs/stationary_enemy", typeof(GameObject));
-	/*
-	public static class Enemies{
-		public string TheEnemy = (GameObject)Resources.Load("Prefabs/stationary_enemy", typeof(GameObject));
-	}
+	private GameObject EnemyHolder;
+	private GameObject Enemy;
 
-	public void EnemyChoice()
-	{
-		EnemyPick = UnityEngine.Random.Range(0, spawn_max);
-		if(EnemyPick >=0 && EnemyPick <= 5)
-		{
-			GameObject Enemy = Enemies.TheEnemy;
-		}
-	}*/
 
 	public void Start()
 	{
-		
+		EnemyHolder = GameObject.Find("enemy_loader");
 		DecideRandomSpawn();
 		FindSpawn();
 		//SpawnEnemy();
 	}
 
-	private void SpawnEnemy(Transform child)
+	private void SpawnEnemy(Transform child, GameObject Enemy)
 	{
 		//Instantiate((Resources.Load<GameObject>(Enemies.TheEnemy)), new Vector3((child.transform.position.x), child.transform.position.y), Quaternion.identity);
-		Instantiate(GameObject.Find("stationary_enemy"), new Vector3((child.transform.position.x), child.transform.position.y), Quaternion.identity);
+		Instantiate(Enemy, new Vector3((child.transform.position.x), child.transform.position.y), Quaternion.identity);
+		Enemy.SetActive(true);
 	}
 
 	void DecideRandomSpawn()
 	{
 		RandomSpawnPoint = UnityEngine.Random.Range(0, spawn_max);
-		Debug.Log(RandomSpawnPoint);
+		//Debug.Log(RandomSpawnPoint);
 	}
 
 	void FindSpawn()
 	{
 		int i = 1;
-		foreach(Transform child in transform)
+		if (RandomSpawnPoint != 0)
 		{
-			//compare = child.ToString();
-			if(child.name == ("spawn_area_" + i) && (i == RandomSpawnPoint))
+			foreach (Transform child in transform)
 			{
-				Debug.Log("spawned at " + child.name);
-				SpawnEnemy(child);
-			}
-			else if(child.name == ("spawn_area_" + i))
-			{
-				Debug.Log("not spawn point");
-				i++;
+				//compare = child.ToString();
+				if (child.name == ("spawn_area_" + i) && (i == RandomSpawnPoint))
+				{
+					Enemy = EnemyHolder.GetComponent<EnemyLoad>().DecideEnemy();
+					//Debug.Log("spawned at " + child.name);
+					SpawnEnemy(child,Enemy);
+				}
+				else if (child.name == ("spawn_area_" + i))
+				{
+					//Debug.Log("not spawn point");
+					i++;
+				}
 			}
 		}
 	}
-
 
 }
