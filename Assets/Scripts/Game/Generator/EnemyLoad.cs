@@ -17,7 +17,7 @@ public class EnemyLoad : MonoBehaviour {
 
 		//}
 
-		Enemy.AddComponent<DespawnEnemy>();
+		//Enemy.AddComponent<DespawnEnemy>();
 		//Enemy.AddComponent<Rigidbody2D>();
 		return Enemy;
 	}

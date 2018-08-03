@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4986649300312494}
   - component: {fileID: 212302733732386536}
   - component: {fileID: 114922484789467268}
+  - component: {fileID: 114570925515346916}
+  - component: {fileID: 114176908738768922}
   - component: {fileID: 114861490091872150}
   - component: {fileID: 114525697388429452}
   - component: {fileID: 114512380737990242}
@@ -92,6 +94,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.51, y: 1.78}
   m_EdgeRadius: 0
+--- !u!114 &114176908738768922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024042267887604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0adebbd846c03549bc12f95500e998b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114437837543052062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,6 +151,23 @@ MonoBehaviour:
   CurrentAreas: []
   player: {fileID: 0}
   logic: {fileID: 0}
+--- !u!114 &114570925515346916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024042267887604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c87e081fad64b644a493c2794bc9484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 1
+  BaseHealth: 1
+  DamageTaken: 0
+  AddHealth: 1
+  CurrentHearts: 1
+  Heart: {fileID: 0}
 --- !u!114 &114861490091872150
 MonoBehaviour:
   m_ObjectHideFlags: 1
