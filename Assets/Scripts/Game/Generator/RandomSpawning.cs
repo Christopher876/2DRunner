@@ -22,21 +22,6 @@ public class RandomSpawning : MonoBehaviour
         //Debug.Log("Done Start");
     }
 
-	public GameObject[] FindSpawnPoints()
-	{
-		GameObject[] SpawnPoints = new GameObject[5];
-		SpawnPoints[0] = GameObject.Find("spawn_area_1");
-		Debug.Log(SpawnPoints[0].transform.position.x);
-
-		/*
-		SpawnPoints.Add(GameObject.Find("spawn_area_1"));
-		SpawnPoints.Add(GameObject.Find("spawn_area_2"));
-		SpawnPoints.Add(GameObject.Find("spawn_area_3"));
-		SpawnPoints.Add(GameObject.Find("spawn_area_4"));
-		SpawnPoints.Add(GameObject.Find("spawn_area_5"));
-		*/
-		return SpawnPoints;
-	}
 
     void AddRoom(float FarthestAreaEndX)
     {
@@ -46,7 +31,7 @@ public class RandomSpawning : MonoBehaviour
         float AreaCenter = FarthestAreaEndX + AreaWidth * 0.5f;
         Area.transform.position = new Vector3(AreaCenter, 0, 0);
 		Area.AddComponent<EnemyGeneration>();
-		//Area.GetComponent<EnemyGeneration>().Begin();
+		DecideToGenerateWeapon(Area);
 		CurrentAreas.Add(Area);
 	}
 
@@ -95,6 +80,15 @@ public class RandomSpawning : MonoBehaviour
         }
         //Debug.Log("Done Deciding");
     }
+
+	private void DecideToGenerateWeapon(GameObject Area)
+	{
+		int RandomWeaponChance = UnityEngine.Random.Range(0, 100);
+		if(RandomWeaponChance > 0 && RandomWeaponChance < 10)
+		{
+			Area.AddComponent<GunGenerator>();
+		}
+	}
 
     private IEnumerator GeneratorCheck()
     {

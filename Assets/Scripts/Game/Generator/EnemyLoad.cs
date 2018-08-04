@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyLoad : MonoBehaviour {
 
-	public GameObject Enemy;
-	public GameObject stationary_enemy;
+	private GameObject Enemy;
+	private GameObject stationary_enemy;
 
 	public GameObject DecideEnemy()
 	{
@@ -14,18 +14,20 @@ public class EnemyLoad : MonoBehaviour {
 		//if(EnemyChoose == 1)
 		//{
 			Enemy = stationary_enemy;
+			Enemy.name = "stationary_enemy";
 
 		//}
 
-		//Enemy.AddComponent<DespawnEnemy>();
-		//Enemy.AddComponent<Rigidbody2D>();
 		return Enemy;
 	}
 
 	// Use this for initialization
 	void Start () {
-		stationary_enemy = GameObject.Find("stationary_enemy");
-		stationary_enemy.SetActive(false);
+		stationary_enemy = (GameObject)Resources.Load("Enemies/stationary_enemy");
+
+
+		//stationary_enemy = GameObject.Find("stationary_enemy");
+		//stationary_enemy.SetActive(false);
 	}
 	
 }

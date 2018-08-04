@@ -31,7 +31,7 @@ public class Health : MonoBehaviour {
 	{
 		if (CurrentHealth <= 0)
 		{
-			Debug.Log("Died");
+			//Debug.Log("Died");
 			SceneManager.LoadScene("SampleScene");
 		}
 	}
@@ -48,7 +48,7 @@ public class Health : MonoBehaviour {
 	{
 		GameObject HeartToDestroy = GameObject.Find("NewHeart" + CurrentHealth);
 		Destroy(HeartToDestroy);
-		Debug.Log("Current Health: " + CurrentHealth);
+		//Debug.Log("Current Health: " + CurrentHealth);
 	}
 
 }

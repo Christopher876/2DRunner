@@ -20,10 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4824279167172358}
   - component: {fileID: 212309835674565100}
-  - component: {fileID: 61549784908965456}
+  - component: {fileID: 114731689626115122}
+  - component: {fileID: 114352327286682406}
+  - component: {fileID: 61455572304999880}
   m_Layer: 0
   m_Name: stationary_enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +43,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61549784908965456
+--- !u!61 &61455572304999880
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +55,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1131382, y: 0.15623856}
+  m_Offset: {x: -0.1286576, y: 0.1858397}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -64,8 +66,31 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4489527, y: 1.6979184}
+  m_Size: {x: 1.512072, y: 1.87087}
   m_EdgeRadius: 0
+--- !u!114 &114352327286682406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675896622344432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0adebbd846c03549bc12f95500e998b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 0
+--- !u!114 &114731689626115122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675896622344432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e812f63198bcd94f9adc68690bd0495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212309835674565100
 SpriteRenderer:
   m_ObjectHideFlags: 1

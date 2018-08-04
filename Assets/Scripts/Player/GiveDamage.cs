@@ -12,10 +12,11 @@ public class GiveDamage : MonoBehaviour {
 		player = GameObject.FindWithTag("Player");
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
+	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if(collision.gameObject.CompareTag("Player"))
 		{
+			Destroy(gameObject);
 			Debug.Log("Doing");
 			Damage = 1;
 			player.GetComponent<Health>().TakeDamage(Damage);
