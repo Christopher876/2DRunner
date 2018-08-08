@@ -14,6 +14,8 @@ public class player_movement : MonoBehaviour
 	public float ChangeTime = 0;
 	public float addToSpeed = 0;
 
+	private int DoubleJump;
+
 	private Swipe Swipe_Controls;
 
 	private void Awake()
@@ -21,12 +23,11 @@ public class player_movement : MonoBehaviour
 		Swipe_Controls = GetComponent<Swipe>();
 	}
 	
-	// Update is called once per frame
+	
 	void Update()
     {
         playermove();
 		rampUp();
-        //playerRayCast();
     }
 
 	void rampUp()
@@ -44,23 +45,22 @@ public class player_movement : MonoBehaviour
 
     void playermove()
     {
-        //Control
-        //moveX = Input.GetAxis("Horizontal");
-
-        if (Input.GetButtonDown("Jump") || Swipe_Controls.swipeUp == true)
+        if ((Input.GetButtonDown("Jump") || Swipe_Controls.swipeUp == true) && DoubleJump < 2)
         {
             jump();
+			ToDoubleJump();
         }
 
-		//if (Swipe_Controls.tap == true)
-			//Debug.Log("tap");
-
-        //Physics
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
 		
 
     }
 
+	void ToDoubleJump()
+	{
+		DoubleJump++;
+		//Debug.Log("Double: " + DoubleJump);
+	}
 
     void jump()
     {
@@ -78,13 +78,14 @@ public class player_movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D ground)
     {
-        //Debug.Log("Player has hit the " + ground.collider.name); //collision detection for the player debug
-                                                                 /*if (ground.gameObject.tag == "ground")
-                                                                 {
-                                                                     isgrounded = true;
-                                                                 }*/
-                                                                 //Code above is for cheking the tag is it is ground and returns true if it is.
-    }
+		if (ground.gameObject.CompareTag("floor"))
+		{
+			isgrounded = true;
+			DoubleJump = 0;
+			//Debug.Log("Reset jump");
+		}
+
+	}
 
     /*
     void playerRayCast()

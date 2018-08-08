@@ -38,10 +38,14 @@ public class Health : MonoBehaviour {
 
 	public void AddHeart(int AddHealth)
 	{
-		CurrentHealth = CurrentHealth + AddHealth;
-		NewHeart = Instantiate(Heart,new Vector3((Heart.transform.position.x + -27), Heart.transform.position.y), Quaternion.identity, Heart.transform);
-		NewHeart.name = "NewHeart" + CurrentHealth;
-		//Debug.Log("Health is " + CurrentHealth);
+		if(CurrentHealth < 8)
+		{
+			CurrentHealth = CurrentHealth + AddHealth;
+			NewHeart = Instantiate(Heart, new Vector3((Heart.transform.position.x + -27), Heart.transform.position.y), Quaternion.identity, Heart.transform);
+			NewHeart.name = "NewHeart" + CurrentHealth;
+			//Debug.Log("Health is " + CurrentHealth);
+		}
+
 	}
 
 	public void RemoveHeart()

@@ -21,15 +21,18 @@ public class GunGenerator : MonoBehaviour {
 		CreateWeapon.name = "Bren_LMG";
 	}
 
-	void ChooseWeapon()
+	public string ChooseWeapon()
 	{
+		string weaponname = "";
 		int RandomChoice = Random.Range(0, 200);
 
 		//Chance for Bren LMG
 		if(RandomChoice>0 && RandomChoice < 200)
 		{
-			Weapon = (GameObject)Resources.Load("Guns/Bren_LMG");	
+			Weapon = (GameObject)Resources.Load("Guns/Bren_LMG");
+			weaponname = "Bren_LMG";
 		}
+		return weaponname;
 	}
 
 

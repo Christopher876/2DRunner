@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61984635892388480}
   m_Layer: 0
   m_Name: bullet_prefab
-  m_TagString: Untagged
+  m_TagString: 3DamageBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

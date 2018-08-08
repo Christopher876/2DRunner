@@ -11,6 +11,9 @@ public class RandomSpawning : MonoBehaviour
 	public GameObject logic;
 	private GameObject[] SpawnPoints;
 
+	private bool DecidedToGenerateGun = false;
+	public GameObject Health;
+
 	// Use this for initialization
 	void Start()
     {
@@ -32,6 +35,7 @@ public class RandomSpawning : MonoBehaviour
         Area.transform.position = new Vector3(AreaCenter, 0, 0);
 		Area.AddComponent<EnemyGeneration>();
 		DecideToGenerateWeapon(Area);
+		DecideToGenerateHealth(Area);
 		CurrentAreas.Add(Area);
 	}
 
@@ -84,9 +88,35 @@ public class RandomSpawning : MonoBehaviour
 	private void DecideToGenerateWeapon(GameObject Area)
 	{
 		int RandomWeaponChance = UnityEngine.Random.Range(0, 100);
-		if(RandomWeaponChance > 0 && RandomWeaponChance < 10)
+		if(RandomWeaponChance > 0 && RandomWeaponChance < 8)
 		{
 			Area.AddComponent<GunGenerator>();
+			DecidedToGenerateGun = true;
+		}
+		else
+		{
+			DecidedToGenerateGun = false;
+		}
+	}
+
+	private void DecideToGenerateHealth(GameObject Area)
+	{
+		if (DecidedToGenerateGun == false)
+		{
+			float RandomHealth = Random.Range(0, 100);
+
+			if (RandomHealth > 0 & RandomHealth < 5)
+			{
+				foreach (Transform child in Area.transform)
+				{
+					if (child.name == "weapon_spawn_area")
+					{
+						Instantiate(Health, new Vector3((child.transform.position.x), child.transform.position.y), Quaternion.identity, Area.transform);
+						Debug.Log("Spawned Health");
+					}
+				}
+				
+			}
 		}
 	}
 

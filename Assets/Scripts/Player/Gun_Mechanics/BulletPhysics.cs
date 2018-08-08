@@ -21,12 +21,13 @@ public class BulletPhysics : MonoBehaviour {
 
 	void FixedUpdate () {
 		float thisposition = gameObject.transform.position.x;
-		if (thisposition > (player.transform.position.x + 15))
+		if (thisposition > (player.transform.position.x + 20))
 		{
 			Destroy(gameObject);
 		}
 	}
 
+	/*
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Enemy"))
@@ -34,5 +35,5 @@ public class BulletPhysics : MonoBehaviour {
 			Destroy(collision.GetComponent<Collider2D>().gameObject);
 			Destroy(gameObject);
 		}
-	}
+	}*/
 }
