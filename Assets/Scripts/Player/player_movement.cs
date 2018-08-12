@@ -43,18 +43,28 @@ public class player_movement : MonoBehaviour
 		}
 	}
 
-    void playermove()
+    public void playermove()
     {
-        if ((Input.GetButtonDown("Jump") || Swipe_Controls.swipeUp == true) && DoubleJump < 2)
-        {
-            jump();
+		if ((Input.GetButtonDown("Jump") || Swipe_Controls.swipeUp == true) && DoubleJump < 2)
+		{
+			jump();
 			ToDoubleJump();
-        }
+		}
 
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
-		
+		else if (Input.GetKeyDown("m"))
+		{
+			gameObject.GetComponent<Gun>().shoot();
+		}
 
+		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
     }
+
+	public void Tojump()
+	{ 
+			jump();
+			ToDoubleJump();
+
+	}
 
 	void ToDoubleJump()
 	{

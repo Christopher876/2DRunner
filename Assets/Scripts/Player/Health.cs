@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour {
+	public GameObject logic;
 
 	public int CurrentHealth = 1;
 	public int BaseHealth = 1;
@@ -31,7 +32,8 @@ public class Health : MonoBehaviour {
 	{
 		if (CurrentHealth <= 0)
 		{
-			//Debug.Log("Died");
+			gameObject.GetComponent<Rank>().Begin();
+			//logic.GetComponent<FileManager>().SaveFile();
 			SceneManager.LoadScene("SampleScene");
 		}
 	}

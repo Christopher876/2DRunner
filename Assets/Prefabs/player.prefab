@@ -22,16 +22,15 @@ GameObject:
   - component: {fileID: 212302733732386536}
   - component: {fileID: 114922484789467268}
   - component: {fileID: 114570925515346916}
-  - component: {fileID: 114176908738768922}
   - component: {fileID: 114861490091872150}
-  - component: {fileID: 114525697388429452}
   - component: {fileID: 114512380737990242}
+  - component: {fileID: 114162558830296150}
   - component: {fileID: 114437837543052062}
   - component: {fileID: 50485064892781000}
   - component: {fileID: 61706423991663994}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +67,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61706423991663994
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -94,7 +93,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.51, y: 1.78}
   m_EdgeRadius: 0
---- !u!114 &114176908738768922
+--- !u!114 &114162558830296150
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,7 +101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1024042267887604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0adebbd846c03549bc12f95500e998b, type: 3}
+  m_Script: {fileID: 11500000, guid: aad0a2fc18a491a40acaf697c86427ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114437837543052062
@@ -116,8 +115,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d5e473244367f47a8b57baded62c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentGun: {fileID: 0}
+  Bullet: {fileID: 1989993834507770, guid: 2d4faaf33dcbe724a8b0b3f79c28702e, type: 2}
+  BulletSpeed: 100
   gun: {fileID: 0}
-  gun_placeholder: {fileID: 0}
+  CurrentClip: {fileID: 0}
+  AmmoClip: 0
+  AmmoReserve: 0
+  MaxClip: 0
+  HasGun: 0
 --- !u!114 &114512380737990242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,26 +137,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   timeText: {fileID: 0}
-  score: 100
+  score: 0
   TimeOnField: 0
   alive: 1
   score_multipler: 5
---- !u!114 &114525697388429452
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1024042267887604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 104a6e3cd2f02e14f890cbdc182a80d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpawnAreas:
-  - {fileID: 0}
-  CurrentAreas: []
-  player: {fileID: 0}
-  logic: {fileID: 0}
 --- !u!114 &114570925515346916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,12 +170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
-  playerjump: 500
+  playerjump: 325
   isgrounded: 0
-  rampUpTime: 0
-  ChangeSpeed: 0
-  ChangeTime: 0
-  addToSpeed: 0
+  rampUpTime: 10
+  ChangeSpeed: 3
+  ChangeTime: 10
+  addToSpeed: 0.5
 --- !u!114 &114922484789467268
 MonoBehaviour:
   m_ObjectHideFlags: 1
