@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61354507839916532}
   - component: {fileID: 114519127569690126}
   m_Layer: 0
-  m_Name: Bren LMG
+  m_Name: Bren_LMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,8 +111,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1280913495
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 006bb3b2d2f1fa945b4b639254ce8c54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

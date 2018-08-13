@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunGenerator : MonoBehaviour {
 
 	private string RetrieveWeapon;
+	public string weaponname = "";
 
 	private GameObject Weapon;
 	private GameObject RandomWeapon;
@@ -18,19 +19,24 @@ public class GunGenerator : MonoBehaviour {
 	void SpawnWeapon(Transform child)
 	{
 		GameObject CreateWeapon = Instantiate(Weapon, new Vector3((child.transform.position.x), child.transform.position.y), Quaternion.identity,gameObject.transform);
-		CreateWeapon.name = "Bren_LMG";
+		CreateWeapon.name = weaponname;
 	}
 
 	public string ChooseWeapon()
 	{
-		string weaponname = "";
 		int RandomChoice = Random.Range(0, 200);
 
 		//Chance for Bren LMG
-		if(RandomChoice>0 && RandomChoice < 200)
+		if(RandomChoice>0 && RandomChoice < 100)
 		{
 			Weapon = (GameObject)Resources.Load("Guns/Bren_LMG");
 			weaponname = "Bren_LMG";
+		}
+
+		else if (RandomChoice>100 && RandomChoice<200)
+		{
+			Weapon = (GameObject)Resources.Load("Guns/Electric_Gun");
+			weaponname = "Electric_Gun";
 		}
 		return weaponname;
 	}

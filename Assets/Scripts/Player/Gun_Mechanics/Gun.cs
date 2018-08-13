@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour {
 	private GameObject FiredBullet;
 
 
-	public float BulletSpeed = 100;
+	public float BulletSpeed;
 	public Image gun;
 	public Text CurrentClip;
 	public int AmmoClip;
@@ -27,7 +27,15 @@ public class Gun : MonoBehaviour {
 
 	public void CheckforSameGun(GameObject gunOnGround)
 	{
-		if(gunOnGround.name == CurrentGun.name)
+		if(gunOnGround.name == CurrentGun.name && gunOnGround.tag == "special_gun")
+		{
+			Debug.Log("special gun");
+			AmmoClip = MaxClip;
+			CurrentClip.text = AmmoClip.ToString();
+			Destroy(gunOnGround);
+		}
+
+		else if(gunOnGround.name == CurrentGun.name)
 		{
 			Debug.Log("same gun");
 			AmmoReserve = AmmoReserve + MaxClip;
@@ -54,6 +62,16 @@ public class Gun : MonoBehaviour {
 			BulletSpeed = 20;
 			CurrentClip.text = AmmoClip.ToString() + "/" + AmmoReserve.ToString();
 		}
+
+		if(CurrentGun.name == "Electric_Gun")
+		{
+			Bullet = (GameObject)Resources.Load("Bullets/electric_bullet");
+			MaxClip = 3;
+			AmmoClip = 3;
+			BulletSpeed = 20;
+			CurrentClip.text = AmmoClip.ToString();
+		}
+
 	}
 
 	public void EquipGun(GameObject gunOnGround)
@@ -80,7 +98,6 @@ public class Gun : MonoBehaviour {
 	{
 		gun.sprite = CurrentGun.GetComponent<SpriteRenderer>().sprite;
 		gun.enabled = true;
-
 	}
 
 
@@ -104,9 +121,9 @@ public class Gun : MonoBehaviour {
 	{
 		if (AmmoClip > 0 && HasGun == true)
 		{
-			FiredBullet = Instantiate(Bullet, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+			FiredBullet = Instantiate(Bullet, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.Euler(new Vector3(0, 0, -90)));
 			FiredBullet.AddComponent<Rigidbody2D>();
-			FiredBullet.AddComponent<BulletPhysics>();
+			//FiredBullet.AddComponent<BulletPhysics>();
 			AmmoClip--;
 			CurrentClip.text = AmmoClip.ToString() + "/" + AmmoReserve.ToString();
 		}
