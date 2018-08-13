@@ -17,6 +17,7 @@ public class player_movement : MonoBehaviour
 	private int DoubleJump;
 
 	private Swipe Swipe_Controls;
+	public Animator player_animator;
 
 	private void Awake()
 	{
@@ -74,6 +75,7 @@ public class player_movement : MonoBehaviour
 
     void jump()
     {
+		player_animator.SetBool("Jump", true);
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerjump);
         isgrounded = false;
     }
@@ -88,6 +90,7 @@ public class player_movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D ground)
     {
+		player_animator.SetBool("Jump", false);
 		if (ground.gameObject.CompareTag("floor"))
 		{
 			isgrounded = true;
