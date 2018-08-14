@@ -29,7 +29,6 @@ public class electric_bullet : MonoBehaviour {
 			Debug.Log("slowed");
 			BulletSpeed = player.GetComponent<player_movement>().playerSpeed;
 			isSlowed = true;
-			//StartCoroutine(KeepBulletSpeedUp());
 		}
 
 	}
