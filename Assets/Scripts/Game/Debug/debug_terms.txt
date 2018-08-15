@@ -1,0 +1,20 @@
+shoot position
+shoot scale
+gun scale
+gun position
+jump scale
+jump position
+score position
+score scale
+score value position
+score value scale
+time position
+time scale
+time value position
+time value scale
+health pos
+health scale
+rank pos
+rank scale
+rank value pos
+rank value scale
