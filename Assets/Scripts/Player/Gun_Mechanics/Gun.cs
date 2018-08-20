@@ -122,7 +122,7 @@ public class Gun : MonoBehaviour {
 		if (AmmoClip > 0 && HasGun == true)
 		{
 			FiredBullet = Instantiate(Bullet, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.Euler(new Vector3(0, 0, -90)));
-			FiredBullet.AddComponent<Rigidbody2D>();
+			//FiredBullet.AddComponent<Rigidbody2D>();
 			//FiredBullet.AddComponent<BulletPhysics>();
 			AmmoClip--;
 			CurrentClip.text = AmmoClip.ToString() + "/" + AmmoReserve.ToString();

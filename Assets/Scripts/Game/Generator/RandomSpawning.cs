@@ -25,14 +25,29 @@ public class RandomSpawning : MonoBehaviour
         //Debug.Log("Done Start");
     }
 
+	//Fix the generating position problems here with checks and modify the x or y or z position
+	float CheckAreaForFix(GameObject Area)
+	{
+		float Y = 0;
+
+		if(Area.name == "room3")
+		{
+			Debug.Log("Fixed Room3");
+			Y = -0.08f;
+			return Y;
+		}
+		return Y;
+	}
 
     void AddRoom(float FarthestAreaEndX)
     {
         int randomAreaIndex = Random.Range(0, SpawnAreas.Length);
 		GameObject Area = (GameObject)Instantiate(SpawnAreas[randomAreaIndex]);
+		Area.name = Area.name.Replace("(Clone)", "").Trim();
         float AreaWidth = Area.transform.Find("floor").localScale.x;
         float AreaCenter = FarthestAreaEndX + AreaWidth * 0.5f;
-        Area.transform.position = new Vector3(AreaCenter, 0, 0);
+		float theY = CheckAreaForFix(Area);
+        Area.transform.position = new Vector3(AreaCenter, theY, 0);
 		Area.AddComponent<EnemyGeneration>();
 		DecideToGenerateWeapon(Area);
 		DecideToGenerateHealth(Area);
@@ -127,7 +142,7 @@ public class RandomSpawning : MonoBehaviour
 
 			float seconds = 0.25f;
             DecidetoGenerate();
-			if (GameObject.Find("player").GetComponent<player_movement>().playerSpeed > 25)
+			if (player_movement.playerSpeed > 25)
 			{
 				yield return new WaitForSeconds(0);
 			}

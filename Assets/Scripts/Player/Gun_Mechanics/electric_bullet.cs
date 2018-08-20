@@ -6,40 +6,33 @@ public class electric_bullet : MonoBehaviour {
 
 	public float BulletSpeed;
 	public GameObject player;
+	public GameObject Enemies;
+	private Rigidbody2D rb;
 	private bool isSlowed = false;
 
 	private void Start()
 	{
-		BulletSpeed = player.GetComponent<player_movement>().playerSpeed * 2;
-		StartCoroutine(SlowDownBullet());
-		gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+		rb = GetComponent<Rigidbody2D>();
+		BulletSpeed = player_movement.playerSpeed * 2;
+		Coroutine slowDown = StartCoroutine(SlowDownBullet());
 		Debug.Log("Speed: " + BulletSpeed);
 	}
 
-	public void Update()
+	public void FixedUpdate()
 	{
-		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<player_movement>().playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+		rb.velocity = new Vector2(BulletSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
 	}
 
 	IEnumerator SlowDownBullet()
 	{
-		yield return new WaitForSeconds(0.8f);
+		yield return new WaitForSeconds(0.7f);
 		if (!isSlowed)
 		{ 
 			Debug.Log("slowed");
-			BulletSpeed = player.GetComponent<player_movement>().playerSpeed;
+			BulletSpeed = player_movement.playerSpeed;
 			isSlowed = true;
 		}
 
-	}
-
-	IEnumerator KeepBulletSpeedUp()
-	{
-		while (true) { 
-			BulletSpeed = player.GetComponent<player_movement>().playerSpeed;
-			Debug.Log("sped up: " + BulletSpeed);
-			yield return new WaitForSeconds(2);
-		}
 	}
 
 }

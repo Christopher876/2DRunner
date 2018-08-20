@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Start_Debug : MonoBehaviour {
@@ -45,7 +46,7 @@ public class Start_Debug : MonoBehaviour {
 		if (textInput)
 		{
 			user_Input = command_Input.text;
-			if (user_Input != "" && command_Input.isFocused && (Input.GetKey(KeyCode.Return) || Device_Config.device_type == DeviceType.Handheld))
+			if (user_Input != "" && command_Input.isFocused && (Input.GetKey(KeyCode.Return) || (Device_Config.device_type == DeviceType.Handheld && Input.GetKey("#"))))
 			{
 				Debug.Log(user_Input);
 				parseInfo();
@@ -58,7 +59,7 @@ public class Start_Debug : MonoBehaviour {
 			float num;
 			string local_input = command_Input.text;
 			isNumber = float.TryParse(local_input, out num);
-			if (isNumber && (Input.GetKey(KeyCode.Return) || Device_Config.device_type == DeviceType.Handheld))
+			if (isNumber && (Input.GetKey(KeyCode.Return) || (Device_Config.device_type == DeviceType.Handheld && Input.GetKey("#"))))
 			{
 				PlusOrSubtract = num;
 				command_Input.text = "";
@@ -213,6 +214,10 @@ public class Start_Debug : MonoBehaviour {
 				transform = rank.transform;
 				ControlButton(transform);
 				SetupScale();
+				break;
+
+			case "res":
+				SceneManager.LoadScene(1);
 				break;
 		}
 	}

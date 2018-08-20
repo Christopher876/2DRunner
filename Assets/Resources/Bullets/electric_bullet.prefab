@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 61420544796271884}
   - component: {fileID: 95582559367674912}
   - component: {fileID: 114996421818521070}
+  - component: {fileID: 114428348309767346}
+  - component: {fileID: 50777968110151570}
   m_Layer: 0
   m_Name: electric_bullet
   m_TagString: Instakill_bullet
@@ -43,6 +45,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50777968110151570
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151175171518532}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61420544796271884
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -86,6 +108,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114428348309767346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151175171518532}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c8350927e57ae49a971e0f4bb0f90c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rb: {fileID: 0}
+  Enemies: {fileID: 0}
 --- !u!114 &114996421818521070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletSpeed: 0
   player: {fileID: 1759202461040542, guid: 10ace7f1de6a452419ad94684069c804, type: 2}
+  Enemies: {fileID: 0}
 --- !u!212 &212203856159243444
 SpriteRenderer:
   m_ObjectHideFlags: 1

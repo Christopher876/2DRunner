@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="49" tileheight="50" infinite="0" nextlayerid="4" nextobjectid="1">
+ <tileset firstgid="1" source="GreenSide.tsx"/>
+ <layer id="3" name="Tile Layer 1" width="50" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0sEKwCAIgOHAww7dev+H7TSQwKUkrY3/g9CYmMVKAQAAAAAA+C5RUZ4KVc2sbqeT5mlGHPOTWHPJ5rVi1jf7vCyemSLfI/eSIV95E8980V5v/VdZvaqR32d4ZrD2VUXd+/rJ6loSAxY=
+  </data>
+ </layer>
+</map>

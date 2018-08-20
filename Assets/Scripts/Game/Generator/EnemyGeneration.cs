@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyGeneration : MonoBehaviour {
 
+	public GameObject Enemies;
 	public int spawn_max = 5;
 	private int RandomSpawnPoint;
 	private int EnemyPick;
@@ -16,6 +17,7 @@ public class EnemyGeneration : MonoBehaviour {
 	public void Start()
 	{
 		EnemyHolder = GameObject.Find("enemy_loader");
+		Enemies = GameObject.Find("Enemies");
 		DecideRandomSpawn();
 		FindSpawn();
 		//SpawnEnemy();
@@ -24,7 +26,7 @@ public class EnemyGeneration : MonoBehaviour {
 	private void SpawnEnemy(Transform child, GameObject Enemy)
 	{
 		//Instantiate((Resources.Load<GameObject>(Enemies.TheEnemy)), new Vector3((child.transform.position.x), child.transform.position.y), Quaternion.identity);
-		Instantiate(Enemy, new Vector3((child.transform.position.x), child.transform.position.y), Quaternion.identity);
+		Instantiate(Enemy, new Vector3((child.transform.position.x), child.transform.position.y), Quaternion.identity, Enemies.transform);
 		Enemy.SetActive(true);
 	}
 

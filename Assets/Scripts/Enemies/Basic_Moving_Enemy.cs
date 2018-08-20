@@ -12,7 +12,7 @@ public class Basic_Moving_Enemy : MonoBehaviour {
 		rigidbody = gameObject.GetComponent<Rigidbody2D>();
 	}
 
-	void Update () {
+	void FixedUpdate () {
 		rigidbody.velocity = new Vector3(-5,0,0);
 	}
 
