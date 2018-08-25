@@ -6,6 +6,7 @@ public class EnemyLoad : MonoBehaviour {
 
 	private GameObject Enemy;
 	private GameObject stationary_enemy;
+	private GameObject shooting_enemy;
 	private GameObject moving_enemy;
 	private GameObject enemy_null;
 
@@ -25,6 +26,12 @@ public class EnemyLoad : MonoBehaviour {
 			Enemy.name = "moving_enemy";
 		}
 
+		else if(EnemyChoose == 3)
+		{
+			Enemy = shooting_enemy;
+			Enemy.name = "trooper";
+		}
+
 		else
 		{
 			Enemy = enemy_null;
@@ -38,6 +45,7 @@ public class EnemyLoad : MonoBehaviour {
 		stationary_enemy = (GameObject)Resources.Load("Enemies/stationary_enemy");
 		moving_enemy = (GameObject)Resources.Load("Enemies/moving_enemy");
 		enemy_null = (GameObject)Resources.Load("Enemies/enemy_null");
+		shooting_enemy = (GameObject)Resources.Load("Enemies/shooting_enemy");
 
 		//stationary_enemy = GameObject.Find("stationary_enemy");
 		//stationary_enemy.SetActive(false);
