@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 61420544796271884}
   - component: {fileID: 95582559367674912}
   - component: {fileID: 114996421818521070}
-  - component: {fileID: 114428348309767346}
   - component: {fileID: 50777968110151570}
   m_Layer: 0
   m_Name: electric_bullet
@@ -108,20 +107,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114428348309767346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1151175171518532}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6c8350927e57ae49a971e0f4bb0f90c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  rb: {fileID: 0}
-  Enemies: {fileID: 0}
 --- !u!114 &114996421818521070
 MonoBehaviour:
   m_ObjectHideFlags: 1

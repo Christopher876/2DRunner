@@ -30,9 +30,9 @@ public class RandomSpawning : MonoBehaviour
 	{
 		float Y = 0;
 
-		if(Area.name == "room3")
+		if(Area.name == "room3" || Area.name == "room4")
 		{
-			Debug.Log("Fixed Room3");
+			//Debug.Log("Fixed Room3");
 			Y = -0.08f;
 			return Y;
 		}

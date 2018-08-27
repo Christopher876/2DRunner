@@ -8,7 +8,7 @@ public class Score : MonoBehaviour {
 	public Text scoreText;
 	public Text timeText;
 	public float score = 0;
-	public int TimeOnField = 0;
+	public static int TimeOnField = 0;
 	private float timer = 0.0f;
 	public bool alive = true;
 

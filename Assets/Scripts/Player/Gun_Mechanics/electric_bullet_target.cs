@@ -9,23 +9,28 @@ public class electric_bullet_target : MonoBehaviour {
 
 	private float speed = 5f;
 	private float rotateSpeed = 200f;
+	private float timer = 0;
 
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody2D>();
 		Enemies = GameObject.Find("Enemies");
-		target = GameObject.FindGameObjectWithTag("Enemy");
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-		Vector2 direction = (Vector2)target.transform.position - rb.position;
-		Debug.Log(direction);
-		direction.Normalize();
-		float rotateAmount = Vector3.Cross(direction, transform.up).z;
-		rb.angularVelocity = -rotateAmount * rotateSpeed;
 
-		rb.velocity = transform.up * speed;
+	// Update is called once per frame
+	void FixedUpdate()
+	{
+		timer += Time.deltaTime;
+		if(timer > 1f)
+		{
+			target = GameObject.FindGameObjectWithTag("Enemy");
+			timer = 0;
+		}
+		float step = speed * Time.deltaTime;
+		if (target != null)
+		{
+			transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
+		}
 	}
 
 	GameObject FindClosestEnemy()

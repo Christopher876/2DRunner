@@ -9,6 +9,8 @@ public class electric_bullet : MonoBehaviour {
 	public GameObject Enemies;
 	private Rigidbody2D rb;
 	private bool isSlowed = false;
+	float timer = 0;
+	bool go = true;
 
 	private void Start()
 	{
@@ -21,6 +23,12 @@ public class electric_bullet : MonoBehaviour {
 	public void FixedUpdate()
 	{
 		rb.velocity = new Vector2(BulletSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+		timer += Time.deltaTime;
+		if (timer > 0.5 && go)
+		{
+			gameObject.AddComponent<electric_bullet_target>();
+			go = false;
+		}
 	}
 
 	IEnumerator SlowDownBullet()
@@ -33,6 +41,15 @@ public class electric_bullet : MonoBehaviour {
 			isSlowed = true;
 		}
 
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Enemy"))
+		{
+			Destroy(collision.gameObject);
+			Destroy(gameObject);
+		}
 	}
 
 }

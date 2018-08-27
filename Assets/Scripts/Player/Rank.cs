@@ -46,7 +46,7 @@ public class Rank : MonoBehaviour {
 	private void CalculateRank()
 	{
 		score = gameObject.GetComponent<Score>().score;
-		time = gameObject.GetComponent<Score>().TimeOnField;
+		time = Score.TimeOnField;
 
 		rankExperience = score * (time/10);
 	}

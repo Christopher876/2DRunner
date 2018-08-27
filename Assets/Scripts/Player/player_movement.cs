@@ -13,23 +13,38 @@ public class player_movement : MonoBehaviour
 	public float ChangeSpeed = 0;
 	public float ChangeTime = 0;
 	public float addToSpeed = 0;
+	public int rayDistance = 33;
 
 	private int DoubleJump;
 
 	private Swipe Swipe_Controls;
-	public Animator player_animator;
+	public Animator playerAnimator;
+
+	public Collider2D collision;
 
 	private void Awake()
 	{
 		Swipe_Controls = GetComponent<Swipe>();
 	}
-	
-	
+
 	void Update()
     {
         playermove();
 		rampUp();
     }
+
+	private float timer = 0;
+	private float freq = 0.5f;
+	private void FixedUpdate()
+	{
+		timer += Time.deltaTime;
+		if (timer > freq)
+		{
+			timer = 0;
+			Debug.Log("Checking front");
+			CheckInFront();
+		}
+	}
 
 	void rampUp()
 	{
@@ -50,6 +65,11 @@ public class player_movement : MonoBehaviour
 		{
 			jump();
 			ToDoubleJump();
+		}
+
+		else if (Input.GetKeyDown("s"))
+		{
+			playerSpeed = 0;
 		}
 
 		else if (Input.GetKeyDown("m"))
@@ -75,7 +95,7 @@ public class player_movement : MonoBehaviour
 
     void jump()
     {
-		player_animator.SetBool("Jump", true);
+		playerAnimator.SetBool("Jump", true);
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerjump);
         isgrounded = false;
     }
@@ -90,7 +110,7 @@ public class player_movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D ground)
     {
-		player_animator.SetBool("Jump", false);
+		playerAnimator.SetBool("Jump", false);
 		if (ground.gameObject.CompareTag("floor"))
 		{
 			isgrounded = true;
@@ -98,6 +118,28 @@ public class player_movement : MonoBehaviour
 			//Debug.Log("Reset jump");
 		}
 
+	}
+
+	public RaycastHit2D hit = new RaycastHit2D();
+	void CheckInFront()
+	{
+		hit = Physics2D.Raycast(transform.position, Vector2.right, rayDistance); //collision.bounds.extents prevents the stuck inside player issue
+
+		if(hit.collider != null)
+			Debug.Log(hit.collider.tag);
+
+		try
+		{
+			if (hit.transform.tag == "floor" && hit.collider != null)
+			{
+				playerSpeed = 0;
+			}
+		}
+
+		catch
+		{
+			Debug.Log("Did not get anything :(");
+		}
 	}
 
     /*
